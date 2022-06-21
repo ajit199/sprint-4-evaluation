@@ -12,6 +12,15 @@ authRouter.post("/new", (req, res) => {
   });
 });
 
+authRouter.get("/all", async (req, res) => {
+  try {
+    let news = await News.find();
+    res.status(200).json(news);
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
+});
+
 authRouter.get("/get", async (req, res) => {
   let query = req.query;
   if (query.q) {

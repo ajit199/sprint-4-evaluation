@@ -3,7 +3,7 @@ let { Schema, model } = require("mongoose");
 const newsSchema = new Schema({
   title: String,
   description: String,
-  date:  {type:Date,default:Date},
+  date: { type: Date, default: Date.now() },
   author: {
     type: String,
     enum: [
@@ -13,20 +13,20 @@ const newsSchema = new Schema({
       "Magdaia Shellard",
       "Kathrine Faichney",
     ],
-},
-    location: {
-      type: String,
-      enum: ["London", "New York"],
-    },
-    tags: {
-      type: String,
-      enum: ["politics", "crime", "tech", "sports", "health"],
-    },
-    totalViews: { type: Number, default: 0 },
-    category: {
-      type: String,
-      enum: ["trending", "top", "new"],
-    },
+  },
+  location: {
+    type: String,
+    enum: ["London", "New York"],
+  },
+  tags: {
+    type: String,
+    enum: ["politics", "crime", "tech", "sports", "health"],
+  },
+  totalViews: { type: Number, default: 0 },
+  category: {
+    type: String,
+    enum: ["trending", "top", "new"],
+  },
 });
 
 let News = new model("News", newsSchema);
